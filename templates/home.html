@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="/static/home.css">
+    <title>Groupie Tracker</title>
+</head>
+<style>
+    .filterPart {
+        display: flex;
+        justify-content: center;
+    }
+
+    .filterOptions label {
+        color: black;
+    }
+
+    .filterOptions input[type="checkbox"] {
+        color: black;
+    }
+
+    span {
+        color: black;
+    }
+
+    .summary {
+        color: black;
+        background-color: #da9f59;
+    }
+
+    details>summary {
+        padding: 4px;
+        border: none;
+        box-shadow: 1px 1px 2px #fff;
+        cursor: pointer;
+    }
+
+    .filterOptions {
+        background-color: #ffe4c4;
+        display: inline-block;
+        /* justify-content: i; */
+        box-shadow: 1px 1px 2px #fff;
+    }
+</style>
+
+<body>
+    <div class="top-section">
+        <a href="/">
+            <h1>Groupie Tracker</h1>
+        </a>
+        <h2>Discover the best artists</h2>
+        <form action="/" method="get" class="filterPart">
+            <details>
+                <summary class="summary">filter</summary>
+                <div class="filer">
+                    <div class="filterOptions" style="color: #000000;">
+                        <!-- <label>FIrst album date <input type="date" name="albumDate"></label> -->
+                        <label>First album </label>
+                        Min: <input type="number" name="firstAlbum_Min" min="1940" max="2023">
+                        Max: <input type="number" name="firstAlbum_Max" min="1960" max="2024">
+                        <br>
+                        <!-- <label>N° Members <input type="number" name="quantity" id="quantity" min="1" max="8"></label> -->
+                        <label>N° Members </label>
+                        <input type="checkbox" name="quantity" value="1" />1
+                        <input type="checkbox" name="quantity" value="2" />2
+                        <input type="checkbox" name="quantity" value="3" />3
+                        <input type="checkbox" name="quantity" value="4" />4
+                        <input type="checkbox" name="quantity" value="5" />5
+                        <input type="checkbox" name="quantity" value="6" />6
+                        <input type="checkbox" name="quantity" value="7" />7
+                        <input type="checkbox" name="quantity" value="8" />8
+                        <br>
+                        <label>Creation DAte</label>
+                        Min: <input type="range" id="minDate" name="minDate" min="1940" max="2023" value="1940"
+                            oninput=func()>
+                        Max: <input type="range" id="maxDate" name="maxDate" min="1968" max="2024" value="2024"
+                            oninput=func()>
+                        <p id="infoDate"></p>
+                        <script>
+                            const func = () => {
+                                let min = document.getElementById("minDate").value;
+                                console.log(min)
+                                let max = document.getElementById("maxDate").value;
+                                document.getElementById("infoDate").innerHTML = `Date: ${min} - ${max}`
+                            }
+                        </script>
+                        <label>Locations</label>
+                        <input list="browser" type="search" name="location" />
+                        <datalist id="browser">
+                            {{range .AllLocations}}
+                            <option value="{{.}}" name="location"></option>
+                            {{end}}
+                        </datalist>
+                        <br>
+                        <button>Filtre</button>
+                    </div>
+                </div>
+            </details>
+        </form>
+        {{if .ErrorMessage}}
+        <span style="color: #fff;">{{.ErrorMessage}}</span>
+        {{end}}
+    </div>
+    <div class="container">
+        <div class="artists">
+            {{range .FiltedArtists}}
+            <div class="card">
+                <a href="/artist/{{.Artist.Id}}">
+                    <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
+                    <h3 class="name">{{.Artist.Name}}</h3>
+                </a>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</body>
+
+</html>

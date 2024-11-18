@@ -1,0 +1,22 @@
+body {
+    color: rgb(228, 182, 126);
+    font-family: "Montserrat", sans-serif;
+    background-color: #161616;
+    text-align: center;
+    padding-top: 30vh;
+    letter-spacing: 2px;
+    font-size: 2vw;
+    line-height: 0.5;
+}
+
+@media (max-width: 1024px) {
+    body {
+        font-size: 4vw;
+    }
+}
+
+@media (max-width: 540px) {
+    body {
+        font-size: 5vw;
+    }
+}

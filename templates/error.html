@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/error.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <title>Error {{.StatusCode}}</title>
+</head>
+
+<body>
+    <h2>Error {{.StatusCode}}</h2>
+    <h1>{{.Message}}</h1>
+    <a href="/" style="color:white"><h6>back</h6></a>
+</body>

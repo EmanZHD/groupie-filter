@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.top-section {
+    height: 95vh;
+    background: url("/static/img/dark1.jpg") center ;
+    background-size: cover;
+    border-bottom: 1px groove #f5d1a5;
+    border-bottom-left-radius: 4vw;
+    border-bottom-right-radius: 4vw;
+    margin-bottom: 30px;
+}
+
+body {
+    background-color: #161616;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    
+}
+
+h1 {
+    font-size: 4vw;
+    text-align: center;
+    padding-top: 30vh;
+    letter-spacing: 1.5px;
+    color: #da9f59;
+}
+
+h2 {
+    text-align: center;
+    font-size: 5vw;
+    margin-top: 20px;
+    letter-spacing: 1.5px;
+    color: #ffe4c4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.artists {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin: 0px 150px; */
+    gap: 30px;
+    justify-content: center;
+}
+
+.card {
+    background-color: #222222;
+    padding: 5px;
+    border: 1px groove #fdebd5;
+    border-radius: 15px;
+    /* width: fit-content; */
+}
+
+.card:hover {
+    border: 1px solid #e2b379;
+    background-color: #0e0e0e;
+
+}
+
+img {
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    /* width: fit-content; */
+}
+
+.name {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 7px 0px;
+    color: #ffe4c4;
+}
+
+a {
+    text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+    .top-section {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 5vw;
+
+    }
+
+    h2 {
+        font-size: 6vw;
+
+    }
+}
+
+@media (max-width: 540px) {
+    h1 {
+        font-size: 8vw;
+        letter-spacing: normal;
+    }
+
+    h2 {
+        font-size: 10vw;
+        letter-spacing: normal;
+    }
+}

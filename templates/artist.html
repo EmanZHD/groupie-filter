@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/artist.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkn0cpRHsO81GYopWbwvydE1gg01jgLUg&libraries=maps,marker&v=beta" defer></script>
+    
+    <title>{{.AllData.Artist.Name}}</title>
+</head>
+<body>  
+    <div class="container">
+<!-- header part -->
+        <div class="header">
+            <p>{{.AllData.Artist.Name}}</p>
+            <a href="/">Home</a>
+        </div>
+
+<!-- top part -->
+        <div class="top-section">
+            <img src="{{.AllData.Artist.Image}}" alt="{{.AllData.Artist.Name}}">
+            <div class="artist">
+                <div class="members">
+                    <h3>Members:</h3>
+                    <ul>
+                        {{range .AllData.Artist.Members}}
+                            <li>{{.}}</li>
+                        {{end}}
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Creation Date:</h3>
+                    <ul>
+                        <li>{{.AllData.Artist.CreationDate}}</li>
+                    </ul>
+                </div>
+            
+                <div>
+                    <h3>First Album:</h3>
+                    <ul>
+                        <li>{{.AllData.Artist.FirstAlbum}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+<!-- bottom part -->
+        <div class="bottom-section">
+            <div class="location">
+                <h3>Concert Location:</h3>
+                <ul>
+                    {{range .AllData.Location.Location}}
+                        <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+
+            <div class="dates">
+                <h3>Concert Dates:</h3>
+                <ul>
+                    {{range .AllData.Date.Date}}
+                        <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+        
+            <div class="relation">
+                <h3>Locations with Dates:</h3>
+                {{range $key, $values := .AllData.Relation.Relation}}
+                <ul>
+                    <li>{{$key}}:</li>
+                    {{range $values}}
+                    <li style="list-style: none;">{{.}}</li>
+                    {{end}}
+                </ul>
+                {{end}}
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
